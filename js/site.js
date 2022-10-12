@@ -1,14 +1,53 @@
-function displayMessage() {
+function getValue() {
+  // hides the Results alert
+  document.getElementById("alert").classList.add("invisible");
 
-    let msg = document.getElementById("message").value;
+  // get the user input
+  let userString = document.getElementById("wordValue").value;
 
-    // alert(msg);
+  // test if string is empty
+  if (userString == "") {
+    Swal.fire({
+      icon: "error",
+      backdrop: false,
+      title: "Error...",
+      text: "Must enter a string",
+    });
+  }
 
-    Swal.fire( 
-        {
-            backdrop: false,
-            title: 'App Name',
-            text: msg
-        }
-    )
+  // reverse the user input
+  //   let revString = reverseAStringJS(userString);
+  let revString = reverseAString(userString);
+
+  // display the reversed user input
+  displayString(revString);
+}
+
+// reverse string
+function reverseAString(userString) {
+  let revString = [];
+
+  // user input = 'word'
+  for (let i = userString.length - 1; i >= 0; i--) {
+    // loop from string length - 1 down to 0
+    revString += userString[i]; // add element in userString to revString
+  }
+  return revString;
+}
+
+// reverse string JS style
+function reverseAStringJS(userString) {
+  let userArray = userString.split(""); // split string into an array
+  let revArray = userArray.reverse(); // reverse array
+  let revString = revArray.join(""); // return array to a string
+
+  return revString;
+}
+
+// display string
+function displayString(revString) {
+  document.getElementById(
+    "msg"
+  ).innerHTML = `Your string reversed is: <strong>${revString}</strong>`;
+  document.getElementById("alert").classList.remove("invisible");
 }
