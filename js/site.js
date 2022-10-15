@@ -16,7 +16,7 @@ function getValue() {
   }
 
   // reverse the user input
-  //   let revString = reverseAStringJS(userString);
+  // let revString = reverseAStringJS(userString);
   let revString = reverseAString(userString);
 
   // display the reversed user input
